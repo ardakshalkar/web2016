@@ -14,9 +14,6 @@ for ($i=0;$i<$num;$i++){
 }
 ?>
 
-<form action="create_new.php">
-Title: <input type="text" name="title"/><br/>
-Price: <input type="number" name="price"/><br/>
-Phone: <input type="text" name="phone"/><br/>
-<input type="submit"/>
-</form>
+<!-- Include new form -->
+<?php include("new.php") ?>
+

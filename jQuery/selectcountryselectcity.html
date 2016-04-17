@@ -1,0 +1,38 @@
+<html>
+<body >
+<div id="info"></div>
+<select id="country">
+<option value="none">Select country</option>
+<option value="en">England</option>
+<option value="fr">France</option>
+<option value="jp">Japan</option>
+</select>
+<select id="city" disabled>
+<option>Select city</option>
+</select>
+
+<script src="jquery.js"></script>
+<script>
+var en_cities = ["London","Bristol"];
+var fr_cities = ["Paris","Marseille"];
+var countries = {"en":en_cities,"fr":fr_cities};
+$(document).ready(function(){
+	$("#country").change(function(){
+		if ($("#country").val()!="none")
+			$('#city').attr('disabled',false);
+		else
+			$("#city").attr("disabled",true);
+		$("#city option:gt(0)").remove();
+		var city_array = [];
+		if ($("#country").val()!="none"){
+			city_array = countries[$("#country").val()];
+		}
+		for (var i=0;i<city_array.length;i++){
+			$("#city").append("<option>"+city_array[i]+"</option>");
+		}
+		
+	});
+});
+</script>
+</body>
+</html>

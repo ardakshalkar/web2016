@@ -1,0 +1,45 @@
+<html>
+<body>
+<div id="phones">
+	<div>
+		<input type="text" name="phone[]" value="87004266736" disabled/>
+		<button class="edit_button" data-state="edit">edit</button>
+		<button class="delete_button">delete</button>
+	</div>
+	<div>
+		<input type="text" name="phone[]" value="87076358936" disabled/>
+		<button class="edit_button">edit</button>
+		<button class="delete_button">delete</button>
+	</div>
+</div>
+<button class="new_button">add new phone</button>
+<script src="jquery.js"></script>
+<script>
+
+$(document).ready(function(){
+	$(".new_button").click(function(){
+		var new_phone = $("<div></div>");
+		new_phone.append("<input type='text' name='phone[]'/> ");
+		new_phone.append('<button class="edit_button" data-state="save">save</button>');
+		new_phone.append(" <button class='delete_button'>delete</button>");
+  		$("#phones").append(new_phone);
+  	});
+	  $("#phones").on('click',".edit_button",function(){
+	  	if ($(this).data("state")=="edit"){
+		  	$(this).parent().find("input").attr("disabled",false);
+		  	$(this).data("state","save");
+		  	$(this).text("save");
+	  	}
+	  	else{
+	  		$(this).parent().find("input").attr("disabled",true);
+		  	$(this).data("state","edit");
+		  	$(this).text("edit");
+	  	}
+	  });
+	  $("#phones").on('click',".delete_button",function(){
+	  	$(this).parent().remove();
+	  })
+})
+</script>
+</body>
+</html>
